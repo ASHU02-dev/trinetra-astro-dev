@@ -1,0 +1,827 @@
+/* GLOBAL */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  overflow-x: hidden;
+  background: black;
+  font-family: serif;
+  cursor: crosshair;
+}
+
+.app {
+  min-height: 100vh;
+
+  background: radial-gradient(circle at top, #4a0000 0%, black 65%);
+
+  color: white;
+  overflow: hidden;
+  position: relative;
+}
+
+/* LOADER */
+
+.loading-screen {
+  position: fixed;
+  inset: 0;
+  background: black;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 99999;
+
+  animation: hideLoader 3s forwards;
+}
+
+.loading-screen h1 {
+  color: #c8a24a;
+  letter-spacing: 12px;
+  font-size: 40px;
+
+  animation: pulse 2s infinite;
+}
+
+/* BACKGROUND */
+
+.background-glow {
+  position: absolute;
+
+  width: 700px;
+  height: 700px;
+
+  background: rgba(122, 0, 0, 0.22);
+
+  border-radius: 50%;
+
+  filter: blur(140px);
+
+  top: -250px;
+  left: -150px;
+
+  animation: pulse 6s infinite alternate;
+}
+
+.stars {
+  position: fixed;
+  inset: 0;
+
+  background-image: radial-gradient(white 1px, transparent 1px);
+
+  background-size: 120px 120px;
+
+  opacity: 0.18;
+
+  animation: starsMove 60s linear infinite;
+
+  pointer-events: none;
+}
+
+.smoke {
+  position: fixed;
+  inset: 0;
+
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.03), transparent);
+
+  filter: blur(60px);
+
+  animation: smokeMove 15s infinite alternate;
+
+  pointer-events: none;
+}
+
+/* NAVBAR */
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 25px 40px;
+
+  position: relative;
+  z-index: 10;
+
+  backdrop-filter: blur(10px);
+}
+
+.logo {
+  color: #c8a24a;
+  letter-spacing: 10px;
+  font-size: 34px;
+}
+
+.tagline {
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: 4px;
+  font-size: 11px;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-btn,
+.insta-btn {
+  background: transparent;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  color: white;
+
+  padding: 10px 18px;
+
+  border-radius: 40px;
+
+  text-decoration: none;
+}
+
+/* HERO */
+
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  text-align: center;
+
+  padding: 20px;
+
+  position: relative;
+  z-index: 10;
+}
+
+/* SACRED SYMBOL */
+
+.hero-symbol-container {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  pointer-events: none;
+  overflow: hidden;
+
+  z-index: 0;
+}
+
+.small-heading {
+  letter-spacing: 6px;
+  color: rgba(255, 255, 255, 0.55);
+
+  margin-bottom: 15px;
+
+  z-index: 2;
+}
+
+.main-title {
+  font-size: 90px;
+  color: #c8a24a;
+
+  margin: 0;
+
+  z-index: 2;
+
+  text-shadow: 0 0 25px rgba(200, 162, 74, 0.4);
+}
+
+.hero-text {
+  max-width: 850px;
+
+  margin-top: 30px;
+
+  line-height: 1.9;
+
+  font-size: 22px;
+
+  color: rgba(255, 255, 255, 0.8);
+
+  z-index: 2;
+}
+
+/* BUTTONS */
+
+.button-group {
+  display: flex;
+  gap: 20px;
+
+  margin-top: 50px;
+
+  flex-wrap: wrap;
+  justify-content: center;
+
+  z-index: 2;
+}
+
+.primary-btn {
+  padding: 18px 42px;
+
+  border-radius: 50px;
+
+  background: linear-gradient(to right, #7a0000, #240000);
+
+  text-decoration: none;
+
+  color: white;
+
+  box-shadow: 0 0 35px rgba(122, 0, 0, 0.7);
+
+  transition: 0.3s;
+}
+
+.primary-btn:hover {
+  transform: scale(1.05);
+}
+
+.secondary-btn {
+  padding: 18px 42px;
+
+  border-radius: 50px;
+
+  border: 1px solid rgba(200, 162, 74, 0.4);
+
+  text-decoration: none;
+
+  color: white;
+}
+
+/* FINAL SECTION */
+
+.final-section {
+  text-align: center;
+
+  padding: 120px 20px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+
+  position: relative;
+  z-index: 10;
+}
+
+.final-section h2 {
+  font-size: 65px;
+  color: #c8a24a;
+}
+
+.final-section p {
+  max-width: 800px;
+
+  margin: 25px auto 45px;
+
+  color: rgba(255, 255, 255, 0.65);
+
+  line-height: 1.9;
+}
+
+/* FLOAT BUTTON */
+
+.floating-btn {
+  position: fixed;
+
+  bottom: 25px;
+  right: 25px;
+
+  width: 68px;
+  height: 68px;
+
+  border-radius: 50%;
+
+  background: #7a0000;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  text-decoration: none;
+
+  color: white;
+  font-size: 28px;
+
+  box-shadow: 0 0 35px rgba(122, 0, 0, 0.9);
+
+  z-index: 999;
+}
+
+/* ANIMATIONS */
+
+@keyframes rotateSeal {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes floatSeal {
+  0% {
+    transform: translateY(0px) scale(1);
+  }
+
+  50% {
+    transform: translateY(-8px) scale(1.01);
+  }
+
+  100% {
+    transform: translateY(0px) scale(1);
+  }
+}
+
+@keyframes pulse {
+  from {
+    opacity: 0.4;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes starsMove {
+  from {
+    transform: translateY(0px);
+  }
+
+  to {
+    transform: translateY(300px);
+  }
+}
+
+@keyframes smokeMove {
+  from {
+    transform: translateX(-20px);
+  }
+
+  to {
+    transform: translateX(20px);
+  }
+}
+
+@keyframes hideLoader {
+  0% {
+    opacity: 1;
+  }
+
+  80% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .navbar {
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .main-title {
+    font-size: 58px;
+  }
+
+  .hero-text {
+    font-size: 18px;
+  }
+
+  .final-section h2 {
+    font-size: 42px;
+  }
+
+  .sacred-svg {
+    width: 92vw;
+    height: 92vw;
+    opacity: 0.45;
+  }
+}
+
+/* MOBILE */
+
+@media (max-width: 768px) {
+  .trinetra-symbol {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ring1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .ring2 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .triangle-up {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 90px solid rgba(200, 162, 74, 0.42);
+  }
+
+  .triangle-down {
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 90px solid rgba(200, 162, 74, 0.28);
+  }
+
+  .eye {
+    width: 56px;
+    height: 56px;
+  }
+}
+/* ========================= */
+/* MYSTIC ENERGY CORE */
+/* ========================= */
+
+.orb-container {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin-bottom: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.energy-orb {
+  position: absolute;
+
+  width: 120px;
+  height: 120px;
+
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(255, 220, 120, 0.95) 0%,
+    rgba(160, 0, 0, 0.95) 35%,
+    rgba(20, 0, 0, 1) 100%
+  );
+
+  box-shadow: 0 0 40px rgba(255, 180, 80, 0.5), 0 0 100px rgba(120, 0, 0, 0.5);
+
+  animation: orbPulse 4s ease-in-out infinite;
+}
+
+.energy-ring {
+  position: absolute;
+
+  border-radius: 50%;
+  border: 1px solid rgba(200, 162, 74, 0.35);
+}
+
+.ring1 {
+  width: 180px;
+  height: 180px;
+
+  animation: rotateSlow 18s linear infinite;
+}
+
+.ring2 {
+  width: 240px;
+  height: 240px;
+
+  border-style: dashed;
+
+  animation: rotateReverse 24s linear infinite;
+}
+
+.ring3 {
+  width: 300px;
+  height: 300px;
+
+  opacity: 0.5;
+
+  animation: rotateSlow 40s linear infinite;
+}
+
+/* ========================= */
+/* PARTICLES */
+/* ========================= */
+
+.ring1::before,
+.ring2::before,
+.ring3::before {
+  content: "";
+
+  position: absolute;
+
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+
+  background: #c8a24a;
+
+  top: -5px;
+  left: 50%;
+
+  box-shadow: 0 0 15px #c8a24a;
+}
+
+/* ========================= */
+/* ANIMATIONS */
+/* ========================= */
+
+@keyframes rotateSlow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes rotateReverse {
+  from {
+    transform: rotate(360deg);
+  }
+
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes orbPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 0.85;
+  }
+}
+
+/* ========================= */
+/* MOBILE */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .orb-container {
+    width: 180px;
+    height: 180px;
+  }
+  .energy-orb {
+    position: absolute;
+
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 42px;
+    color: #ffd97a;
+
+    background: radial-gradient(
+      circle,
+      rgba(255, 220, 120, 0.95) 0%,
+      rgba(160, 0, 0, 0.95) 35%,
+      rgba(20, 0, 0, 1) 100%
+    );
+    z-index: 2;
+
+    box-shadow: 0 0 40px rgba(255, 180, 80, 0.5), 0 0 100px rgba(120, 0, 0, 0.5);
+
+    animation: orbPulse 4s ease-in-out infinite;
+  }
+  .ring1 {
+    width: 130px;
+    height: 130px;
+  }
+
+  .ring2 {
+    width: 170px;
+    height: 170px;
+  }
+
+  .ring3 {
+    width: 210px;
+    height: 210px;
+  }
+}
+/* ================================= */
+/* COSMIC MYSTIC BACKGROUND */
+/* ================================= */
+
+.cosmic-bg {
+  position: fixed;
+  inset: 0;
+
+  overflow: hidden;
+
+  pointer-events: none;
+
+  z-index: 0;
+}
+
+/* ================================= */
+/* PLANETS */
+/* ================================= */
+
+.planet {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(0.5px);
+
+  opacity: 0.18;
+}
+
+/* GOLD PLANET */
+
+.planet1 {
+  width: 240px;
+  height: 240px;
+
+  top: 8%;
+  right: -80px;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffe29a 0%,
+    #b36b00 35%,
+    #250000 100%
+  );
+
+  box-shadow: 0 0 60px rgba(255, 180, 80, 0.25);
+
+  animation: floatPlanet 16s ease-in-out infinite;
+}
+
+/* RED PLANET */
+
+.planet2 {
+  width: 180px;
+  height: 180px;
+
+  bottom: 10%;
+  left: -60px;
+
+  background: radial-gradient(
+    circle at 30% 30%,
+    #ffb3b3 0%,
+    #7a0000 45%,
+    #150000 100%
+  );
+
+  box-shadow: 0 0 50px rgba(122, 0, 0, 0.35);
+
+  animation: floatPlanetReverse 20s ease-in-out infinite;
+}
+
+/* ================================= */
+/* SACRED SYMBOLS */
+/* ================================= */
+
+.sacred-mantra {
+  position: absolute;
+
+  color: #c8a24a;
+
+  opacity: 0.08;
+
+  font-size: 90px;
+
+  text-shadow: 0 0 25px rgba(200, 162, 74, 0.5);
+
+  animation: mantraFloat 12s ease-in-out infinite;
+}
+
+/* OM */
+
+.sacred-mantra {
+  top: 18%;
+  left: 12%;
+}
+
+/* MOON */
+
+.mantra2 {
+  top: 65%;
+  right: 14%;
+
+  font-size: 70px;
+
+  animation-delay: 3s;
+}
+
+/* STAR */
+
+.mantra3 {
+  bottom: 20%;
+  left: 45%;
+
+  font-size: 50px;
+
+  animation-delay: 6s;
+}
+
+/* ================================= */
+/* ANIMATIONS */
+/* ================================= */
+
+@keyframes floatPlanet {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(-20px) rotate(8deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes floatPlanetReverse {
+  0% {
+    transform: translateY(0px) rotate(0deg);
+  }
+
+  50% {
+    transform: translateY(20px) rotate(-8deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+}
+
+@keyframes mantraFloat {
+  0% {
+    transform: translateY(0px);
+    opacity: 0.05;
+  }
+
+  50% {
+    transform: translateY(-10px);
+    opacity: 0.12;
+  }
+
+  100% {
+    transform: translateY(0px);
+    opacity: 0.05;
+  }
+}
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media (max-width: 768px) {
+  .planet1 {
+    width: 150px;
+    height: 150px;
+  }
+
+  .planet2 {
+    width: 120px;
+    height: 120px;
+  }
+
+  .sacred-mantra {
+    font-size: 48px;
+  }
+
+  .mantra2 {
+    font-size: 40px;
+  }
+
+  .mantra3 {
+    font-size: 34px;
+  }
+}
