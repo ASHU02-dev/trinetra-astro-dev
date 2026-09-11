@@ -165,6 +165,15 @@ export default function KundliApp({ lang, wa }) {
           width: 100%; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
           color: white; padding: 11px 12px; border-radius: 10px; font-size: 14.5px; font-family: serif;
         }
+        .kundli-form select {
+          -webkit-appearance: none; -moz-appearance: none; appearance: none;
+          background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='%23C8A24A'><path d='M5.5 7.5l4.5 4.5 4.5-4.5z'/></svg>");
+          background-repeat: no-repeat;
+          background-position: right 12px center;
+          background-size: 16px;
+          padding-right: 36px;
+        }
+        .kundli-form select option { background: #1a0000; color: white; }
         .kundli-form input:focus, .kundli-form select:focus { outline: none; border-color: #C8A24A; }
         .kundli-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
 
