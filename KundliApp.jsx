@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 // ⚠️ Change this to your deployed backend URL once hosted (Render/Railway).
-const BACKEND_URL =  "https://trinetra-backend-iziw.onrender.com";
+const BACKEND_URL =  "https://trinetra-backend-iziw.onrender.com /api/kundli";
 
 const RASHIS = ["Mesh","Vrishabh","Mithun","Kark","Simha","Kanya","Tula","Vrishchik","Dhanu","Makar","Kumbh","Meen"];
 const PLANET_SHORT = { Sun:"Su", Moon:"Mo", Mars:"Ma", Mercury:"Me", Jupiter:"Ju", Venus:"Ve", Saturn:"Sa", Rahu:"Ra", Ketu:"Ke" };
